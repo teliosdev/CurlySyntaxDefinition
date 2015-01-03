@@ -1,0 +1,127 @@
+// [PackageDev] target_format: plist, ext: tmLanguage
+{
+  "name": "Curly Template",
+  "scopeName": "source.curly",
+  "fileTypes": [".curly"],
+  "uuid": "c86979be-c965-4918-ba0e-0eac4a04db49",
+
+  "patterns": [
+    {
+      "include": "text.html.basic"
+    },
+    {
+      "name": "comment.block.curly",
+      "begin": "(?<!\\{)\\{\\{!",
+      "end": "\\}\\}"
+    },
+    {
+      "name": "meta.function.terminate.curly",
+      "begin": "(?<!\\{)(\\{\\{)(/)",
+      "end": "(\\}\\})",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.begin.curly" },
+        "2": { "name": "keyword.operator.terminate.curly" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#terminateTag" }]
+    },
+    {
+      "name": "meta.function.if.curly",
+      "begin": "(?<!\\{)(\\{\\{)(#)",
+      "end": "(\\}\\})",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.begin.curly" },
+        "2": { "name": "keyword.operator.if.curly" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#tag" }]
+    },
+    {
+      "name": "meta.function.unless.curly",
+      "begin": "(?<!\\{)(\\{\\{)(\\^)",
+      "end": "(\\}\\})",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.begin.curly" },
+        "2": { "name": "keyword.operator.unless.curly" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#tag" }]
+    },
+    {
+      "name": "meta.function.collection.curly",
+      "begin": "(?<!\\{)(\\{\\{)(\\*)",
+      "end": "(\\}\\})",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.begin.curly" },
+        "2": { "name": "keyword.operator.collection.curly" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#tag" }]
+    },
+    {
+      "name": "meta.function.context.curly",
+      "begin": "(?<!\\{)(\\{\\{)(@)",
+      "end": "(\\}\\})",
+      "beginCaptures": {
+        "1": { "name": "keyword.control.begin.curly" },
+        "2": { "name": "keyword.operator.context.curly" }
+      },
+      "endCaptures": {
+        "1": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#tag" }]
+    },
+    {
+      "name": "meta.function.basic.curly",
+      "begin": "(?<!\\{)\\{\\{(?!\\{)",
+      "end": "\\}\\}",
+      "beginCaptures": {
+        "0": { "name": "keyword.control.begin.curly" }
+      },
+      "endCaptures": {
+        "0": { "name": "keyword.control.end.curly" }
+      },
+      "patterns": [{ "include": "#tag" }]
+    }
+  ],
+
+  "repository": {
+    "terminateTag": {
+      "patterns": [
+        {
+          "name": "variable.other.curly",
+          "match": "([a-z_][a-zA-Z_0-9]*[?!]?)"
+        }
+      ]
+    },
+    "tag": {
+      "patterns": [
+        { "include": "#terminateTag" },
+        {
+          "name": "keyword.operator.argument-seperator.curly",
+          "match": "\\."
+        },
+        {
+          "name": "keyword.operator.assignment.curly",
+          "match": "="
+        },
+        {
+          "name": "string.quoted.double.curly",
+          "match": "\"[^\"]*\""
+        },
+        {
+          "name": "string.quoted.single.curly",
+          "match": "'[^']*'"
+        }
+      ]
+    }
+  }
+}
