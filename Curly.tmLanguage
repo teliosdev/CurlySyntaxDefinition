@@ -4,16 +4,12 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>.curly</string>
+		<string>curly</string>
 	</array>
 	<key>name</key>
 	<string>Curly Template</string>
 	<key>patterns</key>
 	<array>
-		<dict>
-			<key>include</key>
-			<string>text.html.basic</string>
-		</dict>
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!\{)\{\{!</string>
@@ -233,6 +229,10 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>text.html.basic</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -284,7 +284,7 @@
 		</dict>
 	</dict>
 	<key>scopeName</key>
-	<string>source.curly</string>
+	<string>text.html.curly</string>
 	<key>uuid</key>
 	<string>c86979be-c965-4918-ba0e-0eac4a04db49</string>
 </dict>

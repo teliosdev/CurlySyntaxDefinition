@@ -1,14 +1,11 @@
 // [PackageDev] target_format: plist, ext: tmLanguage
 {
   "name": "Curly Template",
-  "scopeName": "source.curly",
-  "fileTypes": [".curly"],
+  "scopeName": "text.html.curly",
+  "fileTypes": ["curly"],
   "uuid": "c86979be-c965-4918-ba0e-0eac4a04db49",
 
   "patterns": [
-    {
-      "include": "text.html.basic"
-    },
     {
       "name": "comment.block.curly",
       "begin": "(?<!\\{)\\{\\{!",
@@ -90,6 +87,9 @@
         "0": { "name": "keyword.control.end.curly" }
       },
       "patterns": [{ "include": "#tag" }]
+    },
+    {
+      "include": "text.html.basic"
     }
   ],
 
